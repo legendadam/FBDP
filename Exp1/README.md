@@ -1,7 +1,7 @@
 # Exp1
 ## 1. 用MPI_Reduce接口改写大数组各元素开平方求和
 * data[N], data[i]=i*(i+1)
-* 可通过命令行传入N的值，比如1000，10000，100000）
+* 可通过命令行传入N的值，比如1000，10000，100000
 ### 代码
 ```C
 #include <stdio.h>
@@ -49,15 +49,15 @@ int main(int argc, char **argv)
 >  mpicc exp1.1.c -o exp1.1 -lm
 #### mpicc编译时报错
 ![pro1.2](./pic/pro1.2.png)  
-报错是因为gcc基于c89标准，在gcc中直接在for循环中初始化增量语法在gcc中是错误的，必须先先定义i变量或换成C99标准
+报错是因为gcc基于c89标准，直接在for循环中初始化增量语法在gcc中是错误的，必须先定义i变量或换成C99标准
 >  mpicc exp1.1.c -o exp1.1 -lm -std=c99
 #### mpiexec运行时出现未知消息
 ![pro1.3](./pic/pro1.3.png)  
-在docker中运行openmpi组件的bug，可以忽略  
-可能是由于/ proc / mounts文件中包含大于512个字符的行,导致OpenMPI的hwloc模块无法正确解析它. Docker倾向于将非常长的行放入/ proc / mounts
+在Docker中运行OpenMPI组件的bug，可以忽略  
+Docker倾向于将非常长的行放入文件/proc/mounts, 可能是由于文件中包含大于512个字符的行,导致OpenMPI的hwloc模块无法正确解析它  
 ### 思考
 #### 程序运行时间(令N=1000000)  
-在MPI_INIT后和MPI_Finalize前设置MPI_Barrier同步障  
+在MPI_Init后和MPI_Finalize前设置MPI_Barrier同步障  
 在MPI_Barrier同步障后增加MPI_Wtime计时器  
 ```C
 MPI_Init(&argc, &argv);
@@ -88,8 +88,8 @@ running time 约为0.025s
 当n=6时  
 ![n=6](./pic/n=6.png)  
 running time 约为0.025s  
-当进程数从1增加到3到4时，运行时间逐渐减少。  
-当进程数大于等于5时，运行时间增加到进程数在1到4时运行时间的10倍并趋于稳定。
+当进程数从1增加到3到4时，运行时间逐渐减少   
+当进程数大于等于5时，运行时间增加到进程数在1到4时运行时间的10倍并逐渐增加
 #### 数学公式猜想
 ![](https://latex.codecogs.com/svg.image?\lim_{n\to&plus;\infty}\sum_{i=0}^{n-1}&space;i(i&plus;1)=\frac{x^2}{2})
 ## 2. 用MPI_Send和MPI_Receive接口计算积分
@@ -138,6 +138,6 @@ int main(int argc, char **argv)
 ![result2](./pic/result2.png)  
 ### 思考
 #### 程序运行时间
-当程序在多节点运行时需要等待较长时间得出结果，猜测节点间的ssh通信速度慢增加了程序的运行时间。
+当程序在多节点运行时需要等待较长时间得出结果，猜测节点间的ssh通信速度较慢增加了程序的运行时间
 #### 数学公式
 ![](https://latex.codecogs.com/svg.image?\int_a^b&space;x^3=\frac{b^4-a^4}{4})
