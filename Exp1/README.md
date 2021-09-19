@@ -46,11 +46,11 @@ int main(int argc, char **argv)
 #### mpicc编译时报错
 ![pro1.1](./pic/pro1.1.png)   
 在编译的时候在后面加上-lm,意思是链接到math函数库
-    >  mpicc exp1.1.c -o exp1.1 -lm
+>  mpicc exp1.1.c -o exp1.1 -lm
 #### mpicc编译时报错
 ![pro1.2](./pic/pro1.2.png)  
 报错是因为gcc基于c89标准，在gcc中直接在for循环中初始化增量语法在gcc中是错误的，必须先先定义i变量或换成C99标准
-    >  mpicc exp1.1.c -o exp1.1 -lm -std=c99
+>  mpicc exp1.1.c -o exp1.1 -lm -std=c99
 #### mpiexec运行时出现未知消息
 ![pro1.3](./pic/pro1.3.png)  
 在docker中运行openmpi组件的bug，可以忽略  
@@ -89,7 +89,7 @@ running time 约为0.025s
 ![n=6](./pic/n=6.png)  
 running time 约为0.025s  
 当进程数从1增加到3到4时，运行时间逐渐减少。  
-当n大于等于5时，运行时间增加到n在1到4时运行时间的10倍并趋于稳定。
+当进程数大于等于5时，运行时间增加到进程数在1到4时运行时间的10倍并趋于稳定。
 #### 数学公式猜想
 ![](https://latex.codecogs.com/svg.image?\lim_{n\to&plus;\infty}\sum_{i=0}^{n-1}&space;i(i&plus;1)=\frac{x^2}{2})
 ## 2. 用MPI_Send和MPI_Receive接口计算积分
