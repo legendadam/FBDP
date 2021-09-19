@@ -91,7 +91,7 @@ running time 约为0.025s
 当进程数从1增加到3到4时，运行时间逐渐减少。  
 当n大于等于5时，运行时间增加到n在1到4时运行时间的10倍并趋于稳定。
 #### 数学公式猜想
-$ \lim_{n\to+\infty}\sum_{i=0}^{n-1} i(i+1)=\frac{x^2}{2} $
+![](https://latex.codecogs.com/svg.image?\lim_{n\to&plus;\infty}\sum_{i=0}^{n-1}&space;i(i&plus;1)=\frac{x^2}{2})
 ## 2. 用MPI_Send和MPI_Receive接口计算积分
 * y=x^3，求其在[10,100]区间的积分
 ### 代码
@@ -140,4 +140,4 @@ int main(int argc, char **argv)
 #### 程序运行时间
 当程序在多节点运行时需要等待较长时间得出结果，猜测节点间的ssh通信速度慢增加了程序的运行时间。
 #### 数学公式
-$ \int_a^b x^3=\frac{b^4-a^4}{4} $
+![](https://latex.codecogs.com/svg.image?\int_a^b&space;x^3=\frac{b^4-a^4}{4})
