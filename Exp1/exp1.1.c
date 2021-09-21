@@ -14,8 +14,8 @@ int main(int argc, char **argv)
         data[i] = i * (i + 1);
     }
     MPI_Init(&argc, &argv);
-    MPI_Barrier(MPI_COMM_WORLD);
-    double start = MPI_Wtime();
+    //MPI_Barrier(MPI_COMM_WORLD);
+    //double start = MPI_Wtime();
     MPI_Comm_rank(MPI_COMM_WORLD, &myid);
     MPI_Comm_size(MPI_COMM_WORLD, &numprocs);
     for (j = myid; j < N; j += numprocs)
@@ -28,8 +28,8 @@ int main(int argc, char **argv)
     {
         printf("Result = %f.\n", result);
     }
-    MPI_Barrier(MPI_COMM_WORLD);
-    double end = MPI_Wtime();
+    //MPI_Barrier(MPI_COMM_WORLD);
+    //double end = MPI_Wtime();
     MPI_Finalize();
-    printf("I am process %d. Running time = %f.\n", myid, end - start);
+    //printf("I am process %d. Running time = %f.\n", myid, end - start);
 }
