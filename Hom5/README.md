@@ -18,7 +18,10 @@
 * 主机C:\Users\adam\Desktop\input目录拷贝到容器h01的/usr/local/hadoop/input/目录下
   > docker cp C:\Users\adam\Desktop\input h01:/usr/local/hadoop/input/
 * 容器h01的/usr/local/hadoop/input目录上传到HDFS的/user/root/目录中
-  > $ cd /usr/local/hadoop
+  > $ cd /usr/local/hadoop  
   > $ bin/hdfs dfs -put input input
-### 
+### 按照单词出现次数从大到小排列
+> 
+### 输出每个作品的前100个高频单词
+### 输出所有作品的前100个高频单词
 ## 实验结果
